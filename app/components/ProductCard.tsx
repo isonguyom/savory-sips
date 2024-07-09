@@ -9,7 +9,7 @@ import IconRatingStar from "./icons/IconRatingStar";
 
 const ProductCard = () => {
   return (
-    <li className="w-full max-w-[174px] lg:max-w-[280px] bg-[#FFE8EA] bg-opacity-60 border border-[#F4EDED] shadow-lg rounded-[6px] px-1 pb-1 pt-4">
+    <li className="w-full bg-[#FFE8EA] bg-opacity-60 border border-[#F4EDED] shadow-lg rounded-[6px] px-1 pb-1 pt-4">
       <div className="w-fit mx-auto">
         <div className="w-fit">
           <Image src="/martini.png" alt="Logo" width={80} height={110} />

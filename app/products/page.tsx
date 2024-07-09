@@ -148,9 +148,11 @@ const ProductsPage = () => {
               </button>
             </div>
           </div>
-          <ul className="flex flex-wrap gap-10 justify-between items-center">
+          <ul className="flex flex-wrap gap-10 justify-center sm:justify-between items-center">
             {drinks.map((item) => (
-              <ProductCard key={item} />
+              <div key={item} className="w-full max-w-[174px] lg:max-w-[280px]">
+              <ProductCard  />
+              </div>
             ))}
           </ul>
         </div>
