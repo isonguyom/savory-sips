@@ -4,7 +4,12 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import IconSearch from "./icons/IconSearch";
 
-const Search: React.FC = () => {
+interface SearchProps {
+
+  placeholder: string;
+}
+
+const Search: React.FC<SearchProps> = ({placeholder}) => {
   const [query, setQuery] = useState("");
   const router = useRouter();
 
@@ -22,7 +27,7 @@ const Search: React.FC = () => {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search"
+          placeholder={placeholder}
           className="text-xs placeholder:text-[#A8797D] h-[34px] px-2.5 bg-transparent border border-[#3A1D1B] rounded-[42px]"
         />
         <div className="absolute top-1/2 -translate-y-1/2 right-2.5">
