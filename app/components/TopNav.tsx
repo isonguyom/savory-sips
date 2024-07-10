@@ -15,8 +15,8 @@ const TopNav: React.FC = () => {
   const navLinks = [
     { label: "Home", href: "/" },
     { label: "Products", href: "/products" },
-    { label: "About", href: "/about" },
-    { label: "Contact", href: "/contact" },
+    { label: "Cart", href: "/products/product" },
+    { label: "Checkout", href: "/checkout" },
   ];
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -51,7 +51,7 @@ const TopNav: React.FC = () => {
         <ul className="flex items-center gap-3">
           <li className="w-fit relative">
             <button className="w-[32px] md:w-[41px] h-[32px] md:h-[41px] bg-[#501B1F] rounded-full flex items-center justify-center">
-              <Link href="/cart">
+              <Link href="/checkout">
                 <IconCart />
               </Link>
             </button>
