@@ -22,40 +22,62 @@ export default function ProductPage() {
   return (
     <main className="w-full">
       <section className="Header-bg w-full min-h-[300px] pt-28 px-4 sm:px-9 flex justify-center">
-        <h1 className="lg:text-xl">Product/Product details</h1>
+        <h1 className="font-bold text-xl lg:4xl">Product/Product details</h1>
       </section>
       <div className="w-full px-4 sm:px-9 mt-6">
-        <section className="w-full flex flex-wrap lg:flex-nowrap gap-6 mb-6">
-          <div className="w-[174px] lg:w-[280px] bg-[#FFE8EA] bg-opacity-60 border border-[#F4EDED] shadow-lg rounded-[6px] px-1 py-6">
+        <section className="w-full flex flex-wrap lg:flex-nowrap gap-y-4 gap-x-6 mb-6 lg:items-center">
+          <div className="w-[208px] lg:w-[350px] h-fit mx-auto bg-[#FFE8EA] bg-opacity-60 border border-[#F4EDED] shadow-lg rounded-[6px] px-1 py-6">
             <div className="w-fit mx-auto">
               <Image src="/martini.png" alt="Logo" width={208} height={208} />
             </div>
           </div>
           <div className="w-full px-3 py-5 text-[#180A0B] rounded-[4px] mt-3 flex flex-col gap-y-6">
             <div className="flex flex-col gap-x-5">
-              <h3 className="font-bold text-sm lg:text-lg">
+              <h3 className="font-bold text-2xl lg:text-4xl mb-5">
                 <Link href="/products/product"> Cabernet Sauvignon</Link> | Red
                 Wine | 12% | 75cl
               </h3>
-              <h5 className="text-xs font-bold">
+              <h5 className="lg:text-xl font-bold flex gap-4">
                 4.5
-                <span className="inline-block w-[10px] h-[10px] md:w-[15px] md:h-[15px]">
-                  <IconRatingStar />
-                </span>
+                <div>
+                  <span className="inline-block w-[10px] h-[10px] md:w-[15px] md:h-[15px]">
+                    <IconRatingStar />
+                  </span>
+                  <span className="inline-block w-[10px] h-[10px] md:w-[15px] md:h-[15px]">
+                    <IconRatingStar />
+                  </span>
+                  <span className="inline-block w-[10px] h-[10px] md:w-[15px] md:h-[15px]">
+                    <IconRatingStar />
+                  </span>
+                  <span className="inline-block w-[10px] h-[10px] md:w-[15px] md:h-[15px]">
+                    <IconRatingStar />
+                  </span>
+                  <span className="inline-block w-[10px] h-[10px] md:w-[15px] md:h-[15px]">
+                    <IconRatingStar />
+                  </span>
+                </div>
               </h5>
-            </div>
-            <div className="flex items-center gap-x-4 lg:gap-x-8">
-              <h4 className="text-sm md:text-base lg:text-lg">10,0000 NGN</h4>
-              <div className="w-[16px] h-[16px] md:w-[30px] md:h-[30px] border border-[#501B1F] rounded-full flex items-center justify-center">
-                <div className="w-[10px] h-[10px] md:w-[15px] md:h-[15px] flex items-center justify-center">
-                  <IconCartDark />
+              <div className="flex flex-col lg:flex-row gap-y-6 lg:items-center gap-x-24 mt-5">
+                <div className="w-fit bg-[#FFE8EA] bg-opacity-60 text-[#180A0B] font-bold border border-[#F4EDED] shadow-lg rounded-[6px] px-6 py-6">
+
+                  75cl * 12 Bottles
+
+                </div>
+                <div className="flex lg:flex-col gap-x-6 gap-y-4">
+                  <button className="bg-[#501B1F] px-5 py-1 text-white rounded-[17px]">Shop</button>
+                  <button className="border border-[#501B1F] px-5 py-1 text-[#501B1F] rounded-[17px]">Add to Cart</button>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="text-[#501B1F]">
+        <section className="text-[#501B1F] mt-20">
+          <div className="flex gap-x-6 mb-10">
+            <button className="bg-[#501B1F] px-5 py-1 text-white rounded-[17px]">Description</button>
+            <button className="border border-[#501B1F] px-5 py-1 text-[#501B1F] rounded-[17px] hidden lg:inline-block">Product review</button>
+            <button className="border border-[#501B1F] px-5 py-1 text-[#501B1F] rounded-[17px] hidden lg:inline-block">Shipping</button>
+          </div>
           <p className="font-bold mb-5">Product Description</p>
           <p>
             Experience the harmonious blend of tradition and modern winemaking
@@ -63,12 +85,12 @@ export default function ProductPage() {
             picturesque vineyards of South Africa, this wine represents a
             perfect fusion of quality, heritage, and innovation.
           </p>
-          <ul className="my-5 flex flex-col gap-y-3">
+          <ul className="my-5 flex flex-col gap-y-3 list-disc pl-5">
             <li>
               <b>Flavor Profile:</b> A delightful blend of ripe red berries,
               dark plums, and subtle hints of spice. Aromas of fresh cherries,
               raspberries, and vanilla. Medium-bodied with smooth tannins and a
-              lingering, velvety finish.
+              lingering, velvety finish. 
             </li>
             <li>
               <b>Pairing Suggestions:</b> Pairs beautifully with grilled meats,
@@ -85,10 +107,10 @@ export default function ProductPage() {
               for both wine enthusiasts and
             </li>
             <li>
-              <b>Bottle Size:</b>750ml
+              <b>Bottle Size:</b> 750ml
             </li>
             <li>
-              <b>Country of Origin:</b>South Africa
+              <b>Country of Origin:</b> South Africa
             </li>
           </ul>
           <p>
@@ -99,13 +121,13 @@ export default function ProductPage() {
           </p>
 
           <p className="mt-5">
-               <b>Category:</b> Wine, Red wine
+            <b>Category:</b> Wine, Red wine
           </p>
         </section>
 
-        <section className="w-full mt-7">
+        <section className="w-full mt-10 pb-8">
           <div className="flex justify-between items-center gap-x-4 w-full mb-6">
-            <h4 className="text-[#180A0B] md:text-lg">
+            <h4 className="text-[#180A0B] md:text-lg font-bold">
               Similiar Products Like This
             </h4>
             <div className="flex items-center gap-x-3">
@@ -117,11 +139,11 @@ export default function ProductPage() {
               </button>
             </div>
           </div>
-          <ul className="w-full overflow-x-auto flex gap-10 justify-center sm:justify-between items-center">
+          <ul className="w-full overflow-x-auto flex gap-6 justify-center sm:justify-between items-center">
             {drinks.map((item) => (
-              <div key={item} className="w-[280px]">
-              <ProductCard />
-              </div>
+              <li key={item} className="w-[280px]">
+                <ProductCard />
+              </li>
             ))}
           </ul>
         </section>

@@ -16,11 +16,10 @@ const NavLink: React.FC<NavLinkProps> = ({ link, pathname }) => {
     <li>
       <Link href={link.href} passHref>
         <span
-          className={`text-lg font-medium transition-colors ${
-            pathname === link.href
-              ? "text-white underline"
-              : "text-[#A09192] hover:text-white"
-          }`}
+          className={`text-lg font-medium transition-colors ${pathname === link.href
+            ? "text-white underline"
+            : "text-[#A09192] hover:text-white"
+            }`}
         >
           {link.label}
         </span>

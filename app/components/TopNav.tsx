@@ -32,12 +32,12 @@ const TopNav: React.FC = () => {
           <IconHamburger />
         </button>
         <ul
-          className={`fixed lg:relative shadow-md lg:shadow-none left-0 top-[95px] lg:left-auto lg:top-auto bg-[#0B0B0A] lg:bg-transparent w-full max-w-[300px] lg:max-w-auto lg:w-fit px-6 py-10 lg:p-0 flex-col lg:flex-row gap-y-8 lg:gap-y-0 gap-x-4 transition-all duration-300 ${
-            menuOpen ? "flex" : "hidden"
-          } lg:flex`}
+          className={`fixed lg:relative shadow-md lg:shadow-none left-0 top-[95px] lg:left-auto lg:top-auto bg-[#0B0B0A] lg:bg-transparent w-full max-w-[300px] lg:max-w-auto lg:w-fit px-6 py-10 lg:p-0 flex-col lg:flex-row gap-y-8 lg:gap-y-0 gap-x-4 transition-all duration-300 ${menuOpen ? "flex" : "hidden"
+            } lg:flex`}
         >
           {navLinks.map((link) => (
             <NavLink key={link.label} link={link} pathname={pathname} />
+
           ))}
         </ul>
       </div>
