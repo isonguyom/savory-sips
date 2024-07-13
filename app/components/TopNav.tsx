@@ -9,17 +9,19 @@ import Search from "./Search";
 import IconCart from "./icons/IconCart";
 import IconUser from "./icons/IconUser";
 import IconHamburger from "./icons/IconHamburger";
+import { useCart } from "../context/CartContext"; // Import the useCart hook
 
 const TopNav: React.FC = () => {
   const pathname = usePathname();
   const navLinks = [
     { label: "Home", href: "/" },
     { label: "Products", href: "/products" },
-    { label: "Cart", href: "/products/product" },
+    { label: "Cart", href: "/cart" },
     { label: "Checkout", href: "/checkout" },
   ];
 
   const [menuOpen, setMenuOpen] = useState(false);
+  const { items } = useCart(); // Use the useCart hook to get cart items
 
   const handleToggleMenu = () => {
     setMenuOpen((prev) => !prev);
@@ -37,7 +39,6 @@ const TopNav: React.FC = () => {
         >
           {navLinks.map((link) => (
             <NavLink key={link.label} link={link} pathname={pathname} />
-
           ))}
         </ul>
       </div>
@@ -56,7 +57,7 @@ const TopNav: React.FC = () => {
               </Link>
             </button>
             <div className="w-[15px] h-[15px] absolute -top-1 -right-1 rounded-full bg-[#CF1A1A] text-[#CFC1C2] text-xs font-medium flex justify-center items-center">
-              1
+              {items.length} {/* Display the number of items in the cart */}
             </div>
           </li>
           <li className="w-fit">

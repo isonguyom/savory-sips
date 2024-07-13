@@ -1,22 +1,17 @@
 import Image from "next/image";
 import ProductCard from "../../components/ProductCard";
 import Link from "next/link";
-import IconCart from "../../components/icons/IconCart";
-import IconCartDark from "../../components/icons/IconCartDark";
 import IconRatingStar from "../../components/icons/IconRatingStar";
 
 export default function ProductPage() {
-  const drinks = [
-    "Robert Mondavi",
-    "Hugel & Fils",
-    "Hugel & Fils",
-    "Hugel & Fils",
-    "Hugel & Fils",
-    "Hugel & Fils",
-    "Beringer",
-    "Veuve Clicquot",
-    "Cantine Florio",
-    "Frey Vineyards",
+  const products = [
+    { id: 1, name: "Cabernet Sauvignon", price: 10000, description: "Red Wine | 12% | 75cl", quantity: 1 },
+    { id: 2, name: "Chardonnay", price: 8000, description: "White Wine | 11% | 75cl", quantity: 1 },
+    { id: 3, name: "Merlot", price: 7500, description: "Red Wine | 13% | 75cl", quantity: 1 },
+    { id: 4, name: "Pinot Grigio", price: 6500, description: "White Wine | 10% | 75cl", quantity: 1 },
+    { id: 5, name: "Rosé", price: 7000, description: "Rose Wine | 11.5% | 75cl", quantity: 1 },
+    { id: 6, name: "Prosecco", price: 9000, description: "Sparkling Wine | 11% | 75cl", quantity: 1 },
+    // Add more products as needed
   ];
 
   return (
@@ -140,9 +135,9 @@ export default function ProductPage() {
             </div>
           </div>
           <ul className="w-full overflow-x-auto flex gap-6 justify-center sm:justify-between items-center">
-            {drinks.map((item) => (
-              <li key={item} className="w-[280px]">
-                <ProductCard />
+            {products.map((item) => (
+              <li key={item.id}>
+                <ProductCard product={item} />
               </li>
             ))}
           </ul>

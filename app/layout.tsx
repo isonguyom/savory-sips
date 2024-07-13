@@ -3,6 +3,7 @@ import { Inter, Inria_Serif } from "next/font/google";
 import "./globals.css";
 import TopNav from "./components/TopNav";
 import Footer from "./components/Footer";
+import { CartProvider } from "./context/CartContext"; // Adjust the path as needed
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,17 +23,19 @@ export const metadata: Metadata = {
   description: "Elevate your wine experience",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+interface RootLayoutProps {
   children: React.ReactNode;
-}>) {
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={`${inter.variable} ${inria_serif.variable}`}>
-        <TopNav />
-        {children}
-        <Footer />
+        <CartProvider>
+          <TopNav />
+          {children}
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );

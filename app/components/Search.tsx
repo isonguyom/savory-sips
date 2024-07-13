@@ -1,38 +1,40 @@
 "use client";
 
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
 import IconSearch from "./icons/IconSearch";
 
 interface SearchProps {
-
   placeholder: string;
+  onSearch: (query: string) => void; // Define the onSearch function in props
 }
 
-const Search: React.FC<SearchProps> = ({placeholder}) => {
+const Search: React.FC<SearchProps> = ({ placeholder, onSearch }) => {
   const [query, setQuery] = useState("");
-  const router = useRouter();
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(e.target.value); // Update query state as user types
+  };
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (query.trim()) {
-      router.push(`/search?q=${query}`);
+      onSearch(query); // Call the onSearch prop with the current query
     }
   };
 
   return (
     <form onSubmit={handleSearch} className="flex items-center">
-      <div className="w-fit h-fit relative">
+      <div className="w-full h-fit relative">
         <input
           type="text"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={handleSearchChange}
           placeholder={placeholder}
-          className="text-xs placeholder:text-[#A8797D] h-[34px] px-2.5 bg-transparent border border-[#3A1D1B] rounded-[42px]"
+          className="text-xs placeholder:text-[#A8797D] w-full h-[34px] px-2.5 bg-transparent border border-[#3A1D1B] rounded-[42px]"
         />
-        <div className="absolute top-1/2 -translate-y-1/2 right-2.5">
+        <button type="submit" className="absolute top-1/2 -translate-y-1/2 right-2.5">
           <IconSearch />
-        </div>
+        </button>
       </div>
     </form>
   );
