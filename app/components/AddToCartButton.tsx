@@ -5,7 +5,7 @@ interface AddToCartButtonProps {
   product: {
     id: number;
     name: string;
-    price: number;
+    selling_price: null;
     quantity: number;
   };
   initialQuantity?: number;

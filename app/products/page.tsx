@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ValuesCard from "../components/ValuesCard";
 import IconSortByArrow from "../components/icons/IconSortByArrow";
 import Search from "../components/Search";
 import ProductCard from "../components/ProductCard";
 import Pagination from "../components/Pagination";
+import { fetchProducts, searchProducts } from "../api";
 
 const ProductsPage = () => {
   const categories = [
@@ -26,44 +27,66 @@ const ProductsPage = () => {
     "Frey Vineyards",
   ];
 
-  const products = [
-    { id: 1, name: "Cabernet Sauvignon", price: 10000, description: "Red Wine | 12% | 75cl", quantity: 1 },
-    { id: 2, name: "Chardonnay", price: 8000, description: "White Wine | 11% | 75cl", quantity: 1 },
-    { id: 3, name: "Merlot", price: 7500, description: "Red Wine | 13% | 75cl", quantity: 1 },
-    { id: 4, name: "Pinot Grigio", price: 6500, description: "White Wine | 10% | 75cl", quantity: 1 },
-    { id: 5, name: "Rosé", price: 7000, description: "Rose Wine | 11.5% | 75cl", quantity: 1 },
-    { id: 6, name: "Prosecco", price: 9000, description: "Sparkling Wine | 11% | 75cl", quantity: 1 },
-    // Add more products as needed
-  ];
-
+  const [products, setProducts] = useState<any[]>([]);
   const [sideNavOpen, setSideNavOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1); // State to track current page
-  const [searchQuery, setSearchQuery] = useState(""); // State to hold search query
-  const productsPerPage = 10; // Number of products per page
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState("");
+  const productsPerPage = 10;
+  const [totalPages, setTotalPages] = useState(1);
 
-  // Calculate total pages based on products length and products per page
-  const totalPages = Math.ceil(products.length / productsPerPage);
+  useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        const data = await fetchProducts();
+        setProducts(data.items);
+        setTotalPages(Math.ceil(data.total / productsPerPage));
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    loadProducts();
+  }, []);
 
-  // Function to handle pagination page change
+  useEffect(() => {
+    const loadSearchedProducts = async () => {
+      try {
+        const data = await searchProducts(searchQuery);
+        setProducts(data.items);
+        setTotalPages(Math.ceil(data.total / productsPerPage));
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    if (searchQuery) {
+      loadSearchedProducts();
+    } else {
+      const loadProducts = async () => {
+        try {
+          const data = await fetchProducts();
+          setProducts(data.items);
+          setTotalPages(Math.ceil(data.total / productsPerPage));
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      loadProducts();
+    }
+  }, [searchQuery]);
+
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
 
-  // Function to filter products based on search query
   const getDisplayedProducts = () => {
-    const filteredProducts = products.filter((product) =>
-      product.name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-
     const startIndex = (currentPage - 1) * productsPerPage;
     const endIndex = startIndex + productsPerPage;
-    return filteredProducts.slice(startIndex, endIndex);
+    return products.slice(startIndex, endIndex);
   };
 
-  // Handler function to update search query
   const handleSearch = (query: string) => {
     setSearchQuery(query);
-    setCurrentPage(1); // Reset pagination to first page when searching
+    setCurrentPage(1);
   };
 
   return (
